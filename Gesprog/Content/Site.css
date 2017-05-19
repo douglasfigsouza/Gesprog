@@ -20,3 +20,17 @@ textarea {
 }
 
 /*Minhas Alterações*/
+.form{
+    border:2px solid rgb(70,130,180);
+    border-radius:10px;
+    font-weight:bold;
+    color:#060d62;
+    font-size:14pt;
+}
+.form legend {
+    color:#060d62;
+}
+.form h3 {
+    color:#9b2480;
+    font-weight:bold;
+}

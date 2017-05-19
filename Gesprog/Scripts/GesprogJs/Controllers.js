@@ -1,7 +1,6 @@
 ﻿angular.module("Gesprog")
 .controller("GesprogCtrl", function ($scope, CidadesService) {
     $scope.getCities = function (id) {
-        alert("teste");
         CidadesService.GetCidades(id).then(function (response) {
             $scope.cities = response.data;
         });

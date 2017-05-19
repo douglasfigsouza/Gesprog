@@ -21,26 +21,32 @@ namespace Gesprog.Models
 
         public int? CIDADEID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="O campo Nome é obrigatório!")]
+        [Display(Name = "Nome")]
         [StringLength(200)]
         public string NOME_PROG { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Telefone é obrigatório!")]
+        [Display(Name = "Telefone")]
         [StringLength(15)]
         public string FONE_PROG { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Skype é obrigatório!")]
+        [Display(Name = "Skype")]
         [StringLength(200)]
         public string SKYPE_PROG { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Linkedin é obrigatório!")]
+        [Display(Name = "Linkedin")]
         [StringLength(200)]
         public string LINKEDIN_PROG { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Email é obrigatório!")]
+        [Display(Name = "Email")]
         [StringLength(200)]
         public string EMAIL_PROG { get; set; }
 
+        [Display(Name = "Portifólio")]
         [StringLength(8000)]
         public string PORTIFOLIO_PROG { get; set; }
 
@@ -48,6 +54,7 @@ namespace Gesprog.Models
         [StringLength(50)]
         public string DISPHRTRDIA_PROG { get; set; }
 
+        [Display(Name = "Pretenção Salarial / Hr")]
         public decimal PRETSAL_PROG { get; set; }
 
         [StringLength(200)]

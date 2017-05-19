@@ -3,40 +3,92 @@
     ViewBag.Title = "Cadastro de Programador";
 }
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 form">
             @using (Html.BeginForm())
             {
                 @Html.ValidationSummary(true)
                 {
+                    <h3>Insira Aqui suas informações.</h3>
+                    <div ng-init="pag=1" ng-show="pag==1">
+                        <fieldset>
+                            <legend>Dados Pessoais</legend>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.NOME_PROG, new { @class = "control-label col-md-12" })
+                                @Html.TextBoxFor(p => p.NOME_PROG, new { @class = "form-control col-md-12", ng_model = "programador.nome" })
+                                @Html.ValidationMessageFor(p => p.NOME_PROG)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.Label("Estados", new { @class = "control-label col-md-12" })
+                                @Html.DropDownList("EstadoId", new SelectList(@ViewBag.Estados, "ESTADOID", "SIGLA"), "Selecione", new { @class = "form-control col-md-12", ng_model = "programador.Estados", ng_change = "getCities(programador.Estados)" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.Label("Cidades", new { @class = "control-label col-md-12" })
+                                <select ng-disabled="!programador.Estados" ng-options="item.NOME for item in cities" ng-model="programador.Cidade" ng-change="programador.Cidadeid=programador.Cidade.CIDADEID" class="form-control col-md-12">
+                                    <option value="">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.EMAIL_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.EMAIL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Email", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.EMAIL_PROG)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.FONE_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.FONE_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Fone", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.FONE_PROG)
+                            </div>
+                            @Html.DisplayFor(m => m.CIDADEID, new { ng_model = "programador.Cidadeid" })
+                        </fieldset>
+                        <fieldset>
+                            <legend>Social</legend>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.SKYPE_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.SKYPE_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Skype", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.SKYPE_PROG)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.LINKEDIN_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.LINKEDIN_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Linkedin", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.LINKEDIN_PROG)
+                            </div>
+                            <div class="form-group col-md-6 pull-right">
+                                <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-success btn-block" type="button">Avançar</button>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div ng-show="pag==2">
                     <fieldset>
-                        <legend>Cadastrar</legend>
+                        <legend>Profisional</legend>
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(p => p.NOME_PROG, new { @class = "control-label col-md-12" })
-                            @Html.TextBoxFor(p => p.NOME_PROG, new { @class = "form-control col-md-12", ng_model = "programador.nome" })
-                            @Html.ValidationMessageFor(p => p.NOME_PROG)
-                        </div>
-                        <div class="form-group col-md-6">
-                            @Html.Label("Estados", new { @class = "control-label col-md-12" })
-                            @Html.DropDownList("EstadoId", new SelectList(@ViewBag.Estados, "ESTADOID", "SIGLA"), "Selecione", new { @class = "form-control col-md-12", ng_model = "programador.Estados", ng_change = "getCities(programador.Estados)" })
-                        </div>
-                        <div class="form-group col-md-6" ng-show="programador.Estados">
-                            @Html.Label("Cidades", new { @class = "control-label col-md-12" })
-                            <select ng-options="item.NOME for item in cities" ng-model="programador.Cidade" ng-change="programador.Cidadeid=programador.Cidade.CIDADEID" class="form-control col-md-12">
-                                <option value="">Selecione</option>
-                            </select>
+                            @Html.LabelFor(p => p.PORTIFOLIO_PROG, new { @class = "col-md-12 control-label" })
+                            @Html.TextBoxFor(p => p.PORTIFOLIO_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Portifolio", ng_required = "Email" })
+                            @Html.ValidationMessageFor(p => p.PORTIFOLIO_PROG)
                         </div>
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(m => m.EMAIL_PROG, new { @class = "col-md-12 control-label" })
-                            @Html.TextBoxFor(m => m.EMAIL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Email", @placeholder = "Seu Email", ng_required = "Email" })
-                            @Html.ValidationMessageFor(m => m.EMAIL_PROG)
+                            @Html.LabelFor(p => p.PRETSAL_PROG, new { @class = "col-md-12 control-label" })
+                            @Html.TextBoxFor(p => p.PRETSAL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Pretencaosal", ng_required = "Email" })
+                            @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
                         </div>
-                        @Html.DisplayFor(m => m.CIDADEID, new { ng_model = "programador.Cidadeid" })
                     </fieldset>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Adicioanar</button>
+                    <div class="form-group col-md-6 pull-left">
+                        <button ng-click="pag=1" ng-class="{'active' : pag==1}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                    </div>
+                    <div class="form-group col-md-6 pull-right">
+                         <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
+                    </div>
+                    </div>
+
+                    <div ng-show="pag==3">
+
+                        <div class="form-group col-md-6 pull-left">
+                            <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                        </div>
+                        <div class="form-group col-md-6 pull-right">
+                            <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
+                        </div>
                     </div>
                 }
             }
         </div>
     </div>
-    {{programador.Estados}}
