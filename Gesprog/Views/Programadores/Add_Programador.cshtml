@@ -2,13 +2,13 @@
 @{
     ViewBag.Title = "Cadastro de Programador";
 }
-    <div class="row">
-        <div class="col-md-6 form">
-            @using (Html.BeginForm())
+<div class="row">
+    <div class="col-md-6 form">
+        @using (Html.BeginForm())
             {
-                @Html.ValidationSummary(true)
-                {
-                    <h3>Insira Aqui suas informações.</h3>
+            @Html.ValidationSummary(true)
+            {
+                <h3>Insira Aqui suas informações.</h3>
                     <div ng-init="pag=1" ng-show="pag==1">
                         <fieldset>
                             <legend>Dados Pessoais</legend>
@@ -58,37 +58,28 @@
                     </div>
 
                     <div ng-show="pag==2">
-                    <fieldset>
-                        <legend>Profisional</legend>
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(p => p.PORTIFOLIO_PROG, new { @class = "col-md-12 control-label" })
-                            @Html.TextBoxFor(p => p.PORTIFOLIO_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Portifolio", ng_required = "Email" })
-                            @Html.ValidationMessageFor(p => p.PORTIFOLIO_PROG)
-                        </div>
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(p => p.PRETSAL_PROG, new { @class = "col-md-12 control-label" })
-                            @Html.TextBoxFor(p => p.PRETSAL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Pretencaosal", ng_required = "Email" })
-                            @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
-                        </div>
-                    </fieldset>
-                    <div class="form-group col-md-6 pull-left">
-                        <button ng-click="pag=1" ng-class="{'active' : pag==1}" class="btn btn-danger btn-block" type="button">Voltar</button>
-                    </div>
-                    <div class="form-group col-md-6 pull-right">
-                         <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
-                    </div>
-                    </div>
+                        <fieldset>
+                            <legend>Profisional</legend>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.PORTIFOLIO_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.PORTIFOLIO_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Portifolio", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.PORTIFOLIO_PROG)
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.PRETSAL_PROG, new { @class = "col-md-12 control-label" })
+                                @Html.TextBoxFor(p => p.PRETSAL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Pretencaosal", ng_required = "Email" })
+                                @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
+                            </div>
+                            <div class="form-group col-md-6 pull-left">
+                                <button ng-click="pag=1" ng-class="{'active' : pag==1}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            </div>
+                            <div class="form-group col-md-6 pull-right">
+                                <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
+                            </div>
+                        </fieldset>
 
-                    <div ng-show="pag==3">
-
-                        <div class="form-group col-md-6 pull-left">
-                            <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
-                        </div>
-                        <div class="form-group col-md-6 pull-right">
-                            <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
-                        </div>
                     </div>
-                }
             }
-        </div>
+        }
     </div>
+</div>

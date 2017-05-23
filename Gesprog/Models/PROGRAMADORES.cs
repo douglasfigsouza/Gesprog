@@ -54,7 +54,7 @@ namespace Gesprog.Models
         [StringLength(50)]
         public string DISPHRTRDIA_PROG { get; set; }
 
-        [Display(Name = "Pretenção Salarial / Hr")]
+        [Display(Name = "Pretenção Salarial/Hr")]
         public decimal PRETSAL_PROG { get; set; }
 
         [StringLength(200)]
