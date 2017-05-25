@@ -15,7 +15,7 @@ namespace Gesprog.Models
             this.ListaDeHorarios = new List<HORARIOS>();
         }
 
-        public IEnumerable<HORARIOS> GetAll()
+        public List<HORARIOS> GetAll()
         {
             var consulta = from h in context.HORARIOS
                            select h;

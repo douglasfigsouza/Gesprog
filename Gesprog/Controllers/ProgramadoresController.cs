@@ -47,6 +47,10 @@ namespace Gesprog.Controllers
 
             return model;
         }
+        public JsonResult GetHorarios()
+        {
+            return new JsonResult {Data=HorariosRep.GetAll(),JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+        }
     }
    
 }
