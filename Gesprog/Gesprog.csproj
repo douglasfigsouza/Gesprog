@@ -89,6 +89,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcCheckBoxList, Version=1.4.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcCheckBoxList.1.4.5\lib\net45\MvcCheckBoxList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -179,7 +183,10 @@
     <Compile Include="Models\ESTADO.cs" />
     <Compile Include="Models\EstadosRepository.cs" />
     <Compile Include="Models\HORARIOS.cs" />
+    <Compile Include="Models\HorariosRepository.cs" />
+    <Compile Include="Models\HorariosViewModel.cs" />
     <Compile Include="Models\NIVEL_DE_CONHECIMENTO.cs" />
+    <Compile Include="Models\PostedHorarios.cs" />
     <Compile Include="Models\PROGRAMADORES.cs" />
     <Compile Include="Models\TECNOLOGIAS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +204,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Programadores\_Horarios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

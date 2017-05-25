@@ -70,6 +70,11 @@
                                 @Html.TextBoxFor(p => p.PRETSAL_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Pretencaosal", ng_required = "Email" })
                                 @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
                             </div>
+                            <div class="form-group col-md-6">
+                                @{Html.RenderAction("Horarios");}
+
+                            </div>
+                            <input type="submit" value="submeter"/>
                             <div class="form-group col-md-6 pull-left">
                                 <button ng-click="pag=1" ng-class="{'active' : pag==1}" class="btn btn-danger btn-block" type="button">Voltar</button>
                             </div>

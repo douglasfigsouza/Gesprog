@@ -1,0 +1,11 @@
+﻿@using MvcCheckBoxList.Model
+@model Gesprog.Models.HorariosViewModel
+
+<div class="form-group col-md-6">
+    @Html.CheckBoxListFor(model => model.PostedHorarios.HorariosIds,
+                                  model => model.AvailableHorarios,
+                                  p=>p.ID_HR,
+                                  p=>p.DESC_HR,
+                                  model => model.SelectedHorarios,
+                                  Position.Horizontal)
+</div>
