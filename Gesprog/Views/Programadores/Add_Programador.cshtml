@@ -71,10 +71,10 @@
                                 @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
                             </div>
                             <div ng-repeat="item in ListHorarios">
-                                <input ng-model="programador.Horarios[item.ID_HR]" type="checkbox" id="">
-                                <label>Item</label>
+                                <input id="{{item.ID_HR}}" type="checkbox" value="{{item.ID_HR}}" ng-checked="selection.indexOf(item.ID_HR) > -1" ng-click="toggleSelection(item.ID_HR)" />
+                                <label>{{item.DESC_HR}}</label>
                             </div>
-                            
+                            {{HorariosSelecionados}}
                                 @*<div class="form-group col-md-12">
                                 @{Html.RenderAction("Horarios");}
 
