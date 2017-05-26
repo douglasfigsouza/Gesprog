@@ -23,29 +23,15 @@ namespace Gesprog.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add_Programador(PROGRAMADORES programador, PostedHorarios postedHorarios)
+        public ActionResult Add_Programador(PROGRAMADORES programador, FormCollection form)
         {
-            foreach(var item in postedHorarios.HorariosIds)
+
+            foreach (var item in form["HorariosSelecionados"] )
             {
-                string id = item;
+                var id = item;
             }
             programador.NOME_PROG = programador.NOME_PROG;
             return View();
-        }
-        public PartialViewResult Horarios()
-        {
-
-                return PartialView("_Horarios",GetHorariosInitialModel());
-        }
-        private HorariosViewModel GetHorariosInitialModel()
-        {
-            var model = new HorariosViewModel();
-            var selectedHorarios = new List<HORARIOS>();
-
-            model.AvailableHorarios = HorariosRep.GetAll();
-            model.SelectedHorarios = selectedHorarios;
-
-            return model;
         }
         public JsonResult GetHorarios()
         {

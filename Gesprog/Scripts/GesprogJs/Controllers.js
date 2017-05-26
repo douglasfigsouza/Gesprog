@@ -2,6 +2,7 @@
 angular.module("Gesprog")
 .controller("GesprogCtrl", function ($scope, Service) {
     //função que preenche o combo cidades em função do estado
+    alert("teste");
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
             $scope.cities = response.data;

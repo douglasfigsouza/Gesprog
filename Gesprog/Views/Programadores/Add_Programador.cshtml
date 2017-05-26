@@ -71,14 +71,9 @@
                                 @Html.ValidationMessageFor(p => p.PRETSAL_PROG)
                             </div>
                             <div ng-repeat="item in ListHorarios">
-                                <input id="{{item.ID_HR}}" type="checkbox" value="{{item.ID_HR}}" ng-checked="selection.indexOf(item.ID_HR) > -1" ng-click="toggleSelection(item.ID_HR)" />
+                                <input id="{{item.ID_HR}}" type="checkbox"ng-model="HorariosSelecionados" name="HorariosSelecionados" value="{{item.ID_HR}}" ng-checked="selection.indexOf(item.ID_HR) > -1" ng-click="toggleSelection(item.ID_HR)" />
                                 <label>{{item.DESC_HR}}</label>
                             </div>
-                            {{HorariosSelecionados}}
-                                @*<div class="form-group col-md-12">
-                                @{Html.RenderAction("Horarios");}
-
-                            </div>*@
                             <div class="form-group col-md-6 pull-left">
                                 <button ng-click="pag=1" ng-class="{'active' : pag==1}" class="btn btn-danger btn-block" type="button">Voltar</button>
                             </div>
@@ -86,7 +81,6 @@
                                 <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
                             </div>
                         </fieldset>
-
                     </div>
             }
         }
