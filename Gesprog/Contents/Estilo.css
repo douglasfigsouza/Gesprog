@@ -24,16 +24,22 @@ textarea {
     border-radius:10px;
     font-weight:bold;
     color:#060d62;
-    font-size:14pt;
+    font-size:12pt;
+    background-color:rgba(255,255,255,0.2);
 }
 .form legend {
     color:#060d62;
+    font-size:12pt;
 }
 .form h3 {
     color:#9b2480;
     font-weight:bold;
+    font-size:13pt;
 }
 
 .pull-left{
     clear:both;
+}
+.pagination {
+    text-align:center;
 }
