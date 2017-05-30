@@ -58,6 +58,8 @@
                             </div>
                         </fieldset>
                     </div>
+
+
                     <div ng-show="pag==2">
                         <fieldset>
                             <legend>Profisional</legend>
@@ -74,23 +76,23 @@
                             {{programador.DISPHRTRDIA_PROG}}
                             <h3>What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje? *</h3>
                             <div class="col-md-12 form-group">
-                                <input type="radio" ng-model="programador.Disponibilidade" name="programador.Disponibilidade" class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                <input type="radio" ng-model="programador.Disponibilidade"class="col-md-1 radio-inline" value="Up to 4 hours per day / Até 4 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">Up to 4 hours per day / Até 4 horas por dia</label>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="radio" ng-model="programador.Disponibilidade" name="programador.Disponibilidade" class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                <input type="radio" ng-model="programador.Disponibilidade"  class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">4 to 6 hours per day / De 4 á 6 horas por dia</label>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="radio" ng-model="programador.Disponibilidade" name="programador.Disponibilidade" class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                <input type="radio" ng-model="programador.Disponibilidade" class="col-md-1 radio-inline" value="6 to 8 hours per day /De 6 á 8 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">6 to 8 hours per day /De 6 á 8 horas por dia</label>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="radio" ng-model="programador.Disponibilidade" name="programador.Disponibilidade" class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                <input type="radio" ng-model="programador.Disponibilidade" class="col-md-1 radio-inline" value="Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)</label>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="radio" ng-model="programador.Disponibilidade"name="programador.Disponibilidade" class="col-md-1 radio-inline" value="4 to 6 hours per day / De 4 á 6 horas por dia" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                <input type="radio" ng-model="programador.Disponibilidade" class="col-md-1 radio-inline" value="Only weekends / Apenas finais de semana" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">Only weekends / Apenas finais de semana</label>
                             </div>
                             @Html.DisplayFor(p=> p.DISPHRTRDIA_PROG, new { ng_model = "programador.DISPHRTRDIA_PROG" })
@@ -106,6 +108,16 @@
                             <div class="form-group col-md-6 pull-right">
                                 <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-success btn-block" type="button">Avançar</button>
                             </div>
+                        </fieldset>
+                    </div>
+
+                    <div ng-show="pag==3">
+                        <fieldset>
+                            <legend>Dados Bancários</legend>
+                            <div class="col-md-offset-12">
+
+                            </div>
+                            @Html.Partial("_DadosBancarios")
                         </fieldset>
                     </div>
             }

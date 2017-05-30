@@ -3,6 +3,7 @@ angular.module("Gesprog")
 .controller("GesprogCtrl", function ($scope, Service) {
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
+        alert("teste");
         Service.GetCidades(id).then(function (response) {
             $scope.cities = response.data;
         });
@@ -18,15 +19,14 @@ angular.module("Gesprog")
         // is currently selected
         if (idx > -1) {
             $scope.HorariosSelecionados.splice(idx, 1);
-            console.log($scope.HorariosSelecionados);
         }
 
             // is newly selected
         else {
             $scope.HorariosSelecionados.push(IdChecked);
-            console.log($scope.HorariosSelecionados);
         }
     };
+    //função que seta a disponibilidade de horario por dia 
     $scope.SetDisponibilidade = function (op) {
         $scope.programador.DISPHRTRDIA_PROG = op;
     };
