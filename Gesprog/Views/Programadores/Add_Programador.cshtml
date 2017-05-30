@@ -114,10 +114,18 @@
                     <div ng-show="pag==3">
                         <fieldset>
                             <legend>Dados Bancários</legend>
-                            <div class="col-md-offset-12">
-
+                            <div class="col-md-6 form-group">
+                                <label class="control-label col-md-12">Banco:</label>
+                                <input type="text" ng-model="programador.Banco"name="programador.Banco" class="col-md-12 form-control"/>
                             </div>
-                            @Html.Partial("_DadosBancarios")
+                            <div class="col-md-6 form-group">
+                                @Html.LabelFor(P=>P.CPF_PROG, new {@class="control-label col-md-12"})
+                                @Html.TextBoxFor(p=>p.CPF_PROG, new { @class="form-control col-md-12 ", ng_model="programador.CPF_PROG"})
+                            </div>
+
+                            <div class="form-group col-md-6 pull-left">
+                                <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            </div>
                         </fieldset>
                     </div>
             }

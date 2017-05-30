@@ -25,6 +25,8 @@ namespace Gesprog.Models
         [Display(Name = "Nome")]
         [StringLength(200)]
         public string NOME_PROG { get; set; }
+        [StringLength(20)]
+        public string CPF_PROG { get; set;}
 
         [Required(ErrorMessage = "O campo Telefone é obrigatório!")]
         [Display(Name = "Telefone")]
