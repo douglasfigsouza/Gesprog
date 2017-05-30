@@ -25,6 +25,8 @@ namespace Gesprog.Models
         [Display(Name = "Nome")]
         [StringLength(200)]
         public string NOME_PROG { get; set; }
+
+        [Display(Name = "Only for Brazilians / CPF")]
         [StringLength(20)]
         public string CPF_PROG { get; set;}
 

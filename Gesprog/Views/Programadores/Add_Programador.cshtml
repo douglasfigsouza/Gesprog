@@ -119,10 +119,25 @@
                                 <input type="text" ng-model="programador.Banco"name="programador.Banco" class="col-md-12 form-control"/>
                             </div>
                             <div class="col-md-6 form-group">
+                                <label class="control-label col-md-12">Agência</label>
+                                <input type="text" ng-model="programador.Agencia" name="programador.Agencia" class="col-md-12 form-control" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label col-md-12">Conta</label>
+                                <input type="text" ng-model="programador.Conta" name="programador.Conta" class="col-md-12 form-control" />
+                            </div>
+                            <div class="col-md-6 form-group">
                                 @Html.LabelFor(P=>P.CPF_PROG, new {@class="control-label col-md-12"})
                                 @Html.TextBoxFor(p=>p.CPF_PROG, new { @class="form-control col-md-12 ", ng_model="programador.CPF_PROG"})
                             </div>
+                            <div class="col-md-12 form-group">
+                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1 radio-inline" value="Chain/Corrente" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                 <label class="col-md-5 control-label">Chain / Corrente</label>
 
+                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1 radio-inline" value="Savings/Poupança" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                 <label class="col-md-5 control-label">Savings / Poupança</label>
+                            </div>
+                            {{programador.TipoConta}}
                             <div class="form-group col-md-6 pull-left">
                                 <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
                             </div>
