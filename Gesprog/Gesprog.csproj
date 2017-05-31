@@ -154,6 +154,8 @@
     <Content Include="Contents\Estilos.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\ScriptsSql\CidadesEstados.sql" />
+    <Content Include="Models\ScriptsSql\Insertions Defaults.sql" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -171,6 +173,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CidadesController.cs" />
+    <Compile Include="Controllers\TecnologiasController.cs" />
     <Compile Include="Controllers\ProgramadoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,6 +182,7 @@
     <Compile Include="Models\BANCO.cs" />
     <Compile Include="Models\CIDADE.cs" />
     <Compile Include="Models\CidadesRepository.cs" />
+    <Compile Include="Models\TecnologiasRepository.cs" />
     <Compile Include="Models\CONTAS_BANCARIAS.cs" />
     <Compile Include="Models\DbGesprog.cs" />
     <Compile Include="Models\ESTADO.cs" />
@@ -216,6 +220,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cidades\" />
+    <Folder Include="Views\Conhecimentos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

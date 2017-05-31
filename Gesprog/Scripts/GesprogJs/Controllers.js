@@ -3,7 +3,6 @@ angular.module("Gesprog")
 .controller("GesprogCtrl", function ($scope, Service) {
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
-        alert("teste");
         Service.GetCidades(id).then(function (response) {
             $scope.cities = response.data;
         });
@@ -30,7 +29,10 @@ angular.module("Gesprog")
     $scope.SetDisponibilidade = function (op) {
         $scope.programador.DISPHRTRDIA_PROG = op;
     };
-
+    //busca as tecnologias
+    Service.GetTecnologias().then(function (response) {
+        $scope.ListTecnologias = response.data;
+    });
 })
 .factory('Service', function ($http) {
     var fac = {};
@@ -39,6 +41,10 @@ angular.module("Gesprog")
     }
     fac.GetHorarios = function () {
         return $http.get('Programadores/GetHorarios');
+    }
+    fac.GetTecnologias = function () {
+
+        return $http.get('Tecnologias/GetAllTecnologias');
     }
     return fac;
 });

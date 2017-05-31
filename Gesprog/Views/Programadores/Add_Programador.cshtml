@@ -153,10 +153,12 @@
                         <fieldset>
                             <legend>Conhecimentos</legend>
                             <h3>Rate yourself from 0 to 5 for the knowledge specified below, and that's okay if you do not know many things, the important thing is to be honest! / Avalie-se de 0 a 5 quanto aos conhecimentos especificados abaixo, e tudo bem se não souber de muitas coisas, o importante é que seja sincero!</h3>
-                            <div class="form-group col-md-12">
+
+                            <div class="form-group col-md-1" ng-repeat="item in ListTecnologias">
+                                <h4>{{DESC_TECNO}}</h4>
                                 <label class="col-md-1">
                                     0
-                                    <input type="radio"/>
+                                    <input type="radio" ng-model="programadorNivelConhecimento" value="0" ng-click="SetNivelConhecimento(programador.NivelConhecimento"+{{ID_TECNO}}+")"/>
                                 </label>
                             </div>
                         </fieldset>
