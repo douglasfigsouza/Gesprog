@@ -130,16 +130,34 @@
                                 @Html.LabelFor(P=>P.CPF_PROG, new {@class="control-label col-md-12"})
                                 @Html.TextBoxFor(p=>p.CPF_PROG, new { @class="form-control col-md-12 ", ng_model="programador.CPF_PROG"})
                             </div>
+                            <h3>Account Type / Tipo de conta</h3>
                             <div class="col-md-12 form-group">
-                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1 radio-inline" value="Chain/Corrente" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1" value="Chain/Corrente" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                  <label class="col-md-5 control-label">Chain / Corrente</label>
-
-                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1 radio-inline" value="Savings/Poupança" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
+                                
+                                 <input type="radio" ng-model="programador.TipoConta" class="col-md-1" value="Savings/Poupança" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                  <label class="col-md-5 control-label">Savings / Poupança</label>
                             </div>
                             {{programador.TipoConta}}
-                            <div class="form-group col-md-6 pull-left">
-                                <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            <div class="form-group col-md-12">
+                                <div class="form-group col-md-6 pull-left">
+                                    <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                                </div>
+                                <div class="form-group col-md-6 pull-right">
+                                    <button ng-click="pag=4" ng-class="{'active' : pag==4}" class="btn btn-success btn-block" type="button">Avançar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div ng-show="pag==4">
+                        <fieldset>
+                            <legend>Conhecimentos</legend>
+                            <h3>Rate yourself from 0 to 5 for the knowledge specified below, and that's okay if you do not know many things, the important thing is to be honest! / Avalie-se de 0 a 5 quanto aos conhecimentos especificados abaixo, e tudo bem se não souber de muitas coisas, o importante é que seja sincero!</h3>
+                            <div class="form-group col-md-12">
+                                <label class="col-md-1">
+                                    0
+                                    <input type="radio"/>
+                                </label>
                             </div>
                         </fieldset>
                     </div>

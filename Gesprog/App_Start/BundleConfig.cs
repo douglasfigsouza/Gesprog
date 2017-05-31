@@ -29,7 +29,7 @@ namespace Gesprog.App_Start
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Contents/css").Include("~/Contents/Estilo.css",
+            bundles.Add(new StyleBundle("~/Contents/css").Include("~/Contents/Estilos.css",
                                                                  "~/Contents/bootstrap.css",
                                                                  "~/Contents/bootstrap.min.css"));
 
