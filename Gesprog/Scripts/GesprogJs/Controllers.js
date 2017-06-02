@@ -4,6 +4,7 @@ angular.module("Gesprog")
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
+            alert("teste");
             $scope.cities = response.data;
         });
     }
@@ -33,6 +34,22 @@ angular.module("Gesprog")
     Service.GetTecnologias().then(function (response) {
         $scope.ListTecnologias = response.data;
     });
+
+    //seta as tecnologias escolhidas e seus respectivos valores
+    $scope.Tecnologias = [];
+    $scope.SetTecnologiasSelecionada = function (nivel, tecnologia) {
+        var idx = $scope.Tecnologias.indexOf(tecnologia.ID_TECNO);
+        // is currently selected
+        if (idx > -1) {
+            $scope.Tecnologias.splice(idx, 1);
+        }
+
+            // is newly selected
+        else {
+            $scope.Tecnologias.push(tecnologia);
+        }
+        console.log($scope.Tecnologias.ID_TECNO);
+    };
 })
 .factory('Service', function ($http) {
     var fac = {};
