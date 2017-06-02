@@ -8,11 +8,11 @@ namespace Gesprog.Models
     public class TecnologiasRepository
     {
         DbGesprog context;
-        List<TECNOLOGIAS> ListaDeTecnoologias;
+        List<TECNOLOGIAS> ListaDeTecnologias;
         public TecnologiasRepository()
         {
             this.context = new DbGesprog();
-            this.ListaDeTecnoologias = new List<TECNOLOGIAS>();
+            this.ListaDeTecnologias = new List<TECNOLOGIAS>();
         }
 
         public List<TECNOLOGIAS> GetAllTecnologias()
@@ -22,13 +22,13 @@ namespace Gesprog.Models
 
             foreach (var item in consulta.ToList())
             {
-                ListaDeTecnoologias.Add(new TECNOLOGIAS
+                ListaDeTecnologias.Add(new TECNOLOGIAS
                 {
                     ID_TECNO = item.ID_TECNO,
                     DESC_TECNO = item.DESC_TECNO
                 });
             }
-            return ListaDeTecnoologias.ToList();
+            return ListaDeTecnologias.ToList();
         }
     }
 }

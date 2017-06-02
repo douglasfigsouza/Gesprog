@@ -14,7 +14,7 @@ namespace Gesprog.Controllers
         {
             this.TecnologiasRep = new TecnologiasRepository();
         }
-        public JsonResult GetAllTeconologias()
+        public JsonResult GetAllTecnologias()
         {
             return new JsonResult { Data = TecnologiasRep.GetAllTecnologias(), JsonRequestBehavior=JsonRequestBehavior.AllowGet };
         }

@@ -4,7 +4,6 @@ angular.module("Gesprog")
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
-            alert("teste");
             $scope.cities = response.data;
         });
     }
@@ -37,18 +36,40 @@ angular.module("Gesprog")
 
     //seta as tecnologias escolhidas e seus respectivos valores
     $scope.Tecnologias = [];
+    $scope.TecnologiasSelecionadas=[];
     $scope.SetTecnologiasSelecionada = function (nivel, tecnologia) {
-        var idx = $scope.Tecnologias.indexOf(tecnologia.ID_TECNO);
-        // is currently selected
-        if (idx > -1) {
-            $scope.Tecnologias.splice(idx, 1);
-        }
+        //if ($scope.Tecnologias.length == 0)
+        //{
+            //$scope.Tecnologias.push({
+            //    ID_TECNO: tecnologia.ID_TECNO,
+            //    DESC_TECNO:tecnologia.DESC_TECNO,
+            //    NIVEL:nivel
 
-            // is newly selected
-        else {
-            $scope.Tecnologias.push(tecnologia);
-        }
-        console.log($scope.Tecnologias.ID_TECNO);
+            //});
+        //}
+        //else
+        //{
+        //    for (var i = 0; i < $scope.Tecnologias.length; i++) {
+        //        if($scope.Tecnologias[i].ID_TECNO!=tecnologia.ID_TECNO)
+        //        {
+        //            $scope.Tecnologias.push({
+        //                ID_TECNO: tecnologia.ID_TECNO,
+        //                DESC_TECNO: tecnologia.DESC_TECNO,
+        //                NIVEL: nivel
+        //            });
+        //        }
+        //    }
+        //}
+        $scope.Tecnologias.push({
+            ID_TECNO: tecnologia.ID_TECNO,
+            DESC_TECNO: tecnologia.DESC_TECNO,
+            NIVEL: nivel
+
+        });
+        $scope.Tecnologias = $scope.Tecnologias.filter(function (elem, i,Tecnologias) {
+            return $scope.Tecnologias.indexOf(elem) == i;
+        });
+        console.log($scope.Tecnologias);
     };
 })
 .factory('Service', function ($http) {
@@ -60,7 +81,6 @@ angular.module("Gesprog")
         return $http.get('Programadores/GetHorarios');
     }
     fac.GetTecnologias = function () {
-
         return $http.get('Tecnologias/GetAllTecnologias');
     }
     return fac;
