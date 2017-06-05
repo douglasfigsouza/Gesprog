@@ -139,20 +139,17 @@
                                  <label class="col-md-5 control-label">Savings / Poupança</label>
                             </div>
                             {{programador.TipoConta}}
-                            <div class="form-group col-md-12">
-                                <div class="form-group col-md-6 pull-left">
-                                    <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
-                                </div>
-                                <div class="form-group col-md-6 pull-right">
-                                    <button ng-click="pag=4" ng-class="{'active' : pag==4}" class="btn btn-success btn-block" type="button">Avançar</button>
-                                </div>
+                            <div class="form-group col-md-6 pull-left">
+                                <button ng-click="pag=2" ng-class="{'active' : pag==2}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            </div>
+                            <div class="form-group col-md-6 pull-right">
+                                <button ng-click="pag=4" ng-class="{'active' : pag==4}" class="btn btn-success btn-block" type="button">Avançar</button>
                             </div>
                         </fieldset>
                     </div>
                     <div ng-show="pag==4">
                         <fieldset>
                             <legend>Conhecimentos</legend>
-                            {{Tecnologias}}
                             <div class="form-group col-md-12" ng-repeat="Tecnologia in ListTecnologias">
                                 <h4>{{Tecnologia.DESC_TECNO}}</h4>
                                 <div class="col-md-12">
@@ -161,26 +158,57 @@
                                         <label class="control-label">0</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="1"ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
+                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="1"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
                                         <label class="control-label">1</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="2"ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
+                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="2"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
                                         <label class="control-label">2</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="3"ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
+                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="3" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
                                         <label class="control-label">3</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="4"ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
+                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="4" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
                                         <label class="control-label">4</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="5" ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
+                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="5"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
                                         <label class="control-label">5</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h4>   Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.</h4>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="control-label col-md-12" for="programador.OutrasTecnologias">Outras</label>
+                                <input type="text" ng-model="programador.OutrasTecnologias" name="programador.OutrasTecnologias" class="col-md-12 form-control" />
+                            </div>
+                            <div class="form-group col-md-6 pull-left">
+                                <button ng-click="pag=3" ng-class="{'active' : pag==3}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            </div>
+                            <div class="form-group col-md-6 pull-right">
+                                <button ng-click="pag=5" ng-class="{'active' : pag==5}" class="btn btn-success btn-block" type="button">Avançar</button>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div ng-show="pag==5">
+                        <fieldset>
+                            <legend>Finalizando</legend>
+                            <h4>Enter the link here CRUD (create, update, delete)- read information in the welcome document quoted in the form description./ Insira aqui o link do CRUD (create, update, delete)- ler informações no documento de Boas Vindas citado na descrição do formulário.</h4>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(p => p.LINKCRUD_PROG, new { @class = "col-md-12 control-label",@for="programador.LINKCRUD_PROG" })
+                                @Html.TextBoxFor(p => p.LINKCRUD_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.LINKCRUD_PROG" })
+                                @Html.ValidationMessageFor(p => p.LINKCRUD_PROG)
+                            </div>
+                            <div class="form-group col-md-6 pull-left">
+                                <button ng-click="pag=4" ng-class="{'active' : pag==4}" class="btn btn-danger btn-block" type="button">Voltar</button>
+                            </div>
+                            <div class="form-group col-md-6 pull-right">
+                                <button class="btn btn-primary btn-block" type="submit">Salvar</button>
                             </div>
                         </fieldset>
                     </div>

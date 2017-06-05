@@ -38,38 +38,30 @@ angular.module("Gesprog")
     $scope.Tecnologias = [];
     $scope.TecnologiasSelecionadas=[];
     $scope.SetTecnologiasSelecionada = function (nivel, tecnologia) {
-        //if ($scope.Tecnologias.length == 0)
-        //{
-            //$scope.Tecnologias.push({
-            //    ID_TECNO: tecnologia.ID_TECNO,
-            //    DESC_TECNO:tecnologia.DESC_TECNO,
-            //    NIVEL:nivel
+        if ($scope.Tecnologias.length == 0) {
+            $scope.Tecnologias.push({
+                ID_TECNO: tecnologia.ID_TECNO,
+                DESC_TECNO: tecnologia.DESC_TECNO,
+                NIVEL: nivel
 
-            //});
-        //}
-        //else
-        //{
-        //    for (var i = 0; i < $scope.Tecnologias.length; i++) {
-        //        if($scope.Tecnologias[i].ID_TECNO!=tecnologia.ID_TECNO)
-        //        {
-        //            $scope.Tecnologias.push({
-        //                ID_TECNO: tecnologia.ID_TECNO,
-        //                DESC_TECNO: tecnologia.DESC_TECNO,
-        //                NIVEL: nivel
-        //            });
-        //        }
-        //    }
-        //}
-        $scope.Tecnologias.push({
-            ID_TECNO: tecnologia.ID_TECNO,
-            DESC_TECNO: tecnologia.DESC_TECNO,
-            NIVEL: nivel
+            });
+        }
+        else {
+            console.log($scope.Tecnologias);
+            for (var i = $scope.Tecnologias.length - 1; i >= 0; i--) {
+                alert(i + " " + $scope.Tecnologias[i].ID_TECNO + " " + tecnologia.ID_TECNO);
+                if ($scope.Tecnologias[i].ID_TECNO == tecnologia.ID_TECNO) {
+                    $scope.Tecnologias.splice(i, 1);
+                };
+            };
+            $scope.Tecnologias.push({
+                ID_TECNO: tecnologia.ID_TECNO,
+                DESC_TECNO: tecnologia.DESC_TECNO,
+                NIVEL: nivel
 
-        });
-        $scope.Tecnologias = $scope.Tecnologias.filter(function (elem, i,Tecnologias) {
-            return $scope.Tecnologias.indexOf(elem) == i;
-        });
-        console.log($scope.Tecnologias);
+            });
+            console.log($scope.Tecnologias);
+        };
     };
 })
 .factory('Service', function ($http) {
