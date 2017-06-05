@@ -25,12 +25,15 @@ namespace Gesprog.Controllers
         [HttpPost]
         public ActionResult Add_Programador(PROGRAMADORES programador, FormCollection form)
         {
-
-            foreach (var item in form["HorariosSelecionados"] )
+            if(ModelState.IsValid)
             {
-                var id = item;
+                foreach (var item in form["HorariosSelecionados"])
+                {
+                    var id = item;
+                }
+                programador.NOME_PROG = programador.NOME_PROG;
+
             }
-            programador.NOME_PROG = programador.NOME_PROG;
             return View();
         }
         public JsonResult GetHorarios()

@@ -1,6 +1,11 @@
 ﻿//localiza o modulo e cria o controller
 angular.module("Gesprog")
 .controller("GesprogCtrl", function ($scope, Service) {
+    //declarações de variaveis
+    $scope.HorariosSelecionados = [];
+    $scope.Tecnologias = [];
+    $scope.TecnologiasSelecionadas = [];
+
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
@@ -11,7 +16,7 @@ angular.module("Gesprog")
     Service.GetHorarios().then(function (response) {
         $scope.ListHorarios = response.data;
     });
-    $scope.HorariosSelecionados = [];
+
     // toggle selection for a given employee by name
     $scope.toggleSelection = function toggleSelection(IdChecked) {
         var idx = $scope.HorariosSelecionados.indexOf(IdChecked);
@@ -35,8 +40,6 @@ angular.module("Gesprog")
     });
 
     //seta as tecnologias escolhidas e seus respectivos valores
-    $scope.Tecnologias = [];
-    $scope.TecnologiasSelecionadas=[];
     $scope.SetTecnologiasSelecionada = function (nivel, tecnologia) {
         if ($scope.Tecnologias.length == 0) {
             $scope.Tecnologias.push({
