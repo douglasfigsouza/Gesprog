@@ -180,6 +180,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BANCO.cs" />
+    <Compile Include="Models\BancosRepository.cs" />
     <Compile Include="Models\CIDADE.cs" />
     <Compile Include="Models\CidadesRepository.cs" />
     <Compile Include="Models\ProgramadoresRepository.cs" />

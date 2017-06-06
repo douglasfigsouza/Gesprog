@@ -127,7 +127,7 @@
                                 <input type="text" ng-model="programador.Conta" name="programador.Conta" class="col-md-12 form-control" />
                             </div>
                             <div class="col-md-6 form-group">
-                                @Html.LabelFor(P=>P.CPF_PROG, new {@class="control-label col-md-12"})
+                                @Html.LabelFor(p=>p.CPF_PROG, new {@class="control-label col-md-12"})
                                 @Html.TextBoxFor(p=>p.CPF_PROG, new { @class="form-control col-md-12 ", ng_model="programador.CPF_PROG"})
                             </div>
                             <h3>Account Type / Tipo de conta</h3>
@@ -149,6 +149,7 @@
                     </div>
 
                     <div ng-show="pag==4">
+                        {{Tecnologias}}
                         <fieldset>
                             <legend>Conhecimentos</legend>
                             <div class="form-group col-md-12" ng-repeat="Tecnologia in ListTecnologias">
