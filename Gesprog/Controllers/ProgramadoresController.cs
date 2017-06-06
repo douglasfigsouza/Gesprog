@@ -11,10 +11,15 @@ namespace Gesprog.Controllers
     {
         EstadosRepository EstadosRep;
         HorariosRepository HorariosRep;
+        List<HORARIOS> ListaDeHorarios;
+        ProgramadoresRepository ProgramadoresRep;
+
         public ProgramadoresController()
         {
             this.EstadosRep = new EstadosRepository();
             this.HorariosRep = new HorariosRepository();
+            this.ListaDeHorarios = new List<HORARIOS>();
+            this.ProgramadoresRep = new ProgramadoresRepository();
         }
         // GET: Programadores
         public ActionResult Add_Programador()
@@ -25,13 +30,16 @@ namespace Gesprog.Controllers
         [HttpPost]
         public ActionResult Add_Programador(PROGRAMADORES programador, FormCollection form)
         {
+            ModelState.Clear();
             if(ModelState.IsValid)
             {
                 foreach (var item in form["HorariosSelecionados"])
                 {
-                    var id = item;
+                    ListaDeHorarios.Add(new HORARIOS {
+                        ID_HR = Convert.ToInt32(item)
+                    });
                 }
-                programador.NOME_PROG = programador.NOME_PROG;
+                ProgramadoresRep.add(programador, ListaDeHorarios);
 
             }
             return View();
