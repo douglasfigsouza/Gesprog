@@ -37,8 +37,7 @@
                                 @Html.TextBoxFor(p => p.FONE_PROG, new { @class = "form-control col-md-12", @ng_model = "programador.Fone", ng_required = "Email" })
                                 @Html.ValidationMessageFor(p => p.FONE_PROG)
                             </div>
-                            @Html.DisplayFor(m => m.CIDADEID, new { ng_model = "programador.Cidadeid" })
-               
+                            <input type="hidden"value="{{programador.Cidadeid}}" ng-model="programador.Cidadeid" name="Cidadeid" />
                         </fieldset>
                         <fieldset>
                             <legend>Social</legend>
@@ -95,7 +94,7 @@
                                 <input type="radio" ng-model="programador.Disponibilidade" class="col-md-1 radio-inline" value="Only weekends / Apenas finais de semana" ng-click="SetDisponibilidade(programador.Disponibilidade);" />
                                 <label class="col-md-11 control-label">Only weekends / Apenas finais de semana</label>
                             </div>
-                            @Html.DisplayFor(p=> p.DISPHRTRDIA_PROG, new { ng_model = "programador.DISPHRTRDIA_PROG" })
+                            <input type="hidden" ng-model="programador.DISPHRTRDIA_PROG" value="{{programador.DISPHRTRDIA_PROG}}" name="DISPHRTRDIA_PROG"/>
                             <h3>What's the best time to work for you? / Pra você qual é o melhor horário para trabalhar? *</h3>
                             <div ng-repeat="item in ListHorarios">
                                 <input class="col-md-1" id="{{item.ID_HR}}" type="checkbox"ng-model="HorariosSelecionados" name="HorariosSelecionados" value="{{item.ID_HR}}" ng-checked="selection.indexOf(item.ID_HR) > -1" ng-click="toggleSelection(item.ID_HR)" />

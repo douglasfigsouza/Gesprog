@@ -8,7 +8,7 @@ namespace Gesprog.Models
     public class ProgramadoresRepository
     {
         DbGesprog context;
-       
+
         public ProgramadoresRepository()
         {
             this.context = new DbGesprog();
@@ -17,8 +17,10 @@ namespace Gesprog.Models
         {
             context.PROGRAMADORES.Add(programador);
             context.SaveChanges();
+            programador.ID_PROG = programador.ID_PROG;
+
             programador.HORARIOS = ListaDeHorarios;
-            context.PROGRAMADORES.Add(programador);
+            context.HORARIOS.Add(programador);
             context.SaveChanges();
         }
          

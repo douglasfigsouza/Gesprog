@@ -34,23 +34,23 @@ namespace Gesprog.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add_Programador(PROGRAMADORES programador, FormCollection form)
+        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form)
         {
-            ModelState.Clear();
+
             if(ModelState.IsValid)
             {
-                programador.ID_PROG = programador.ID_PROG;
-                programador.CIDADEID = programador.CIDADEID;
-                programador.NOME_PROG = programador.NOME_PROG;
-                programador.CPF_PROG = programador.CPF_PROG;
-                programador.FONE_PROG = programador.FONE_PROG;
-                programador.SKYPE_PROG = programador.SKYPE_PROG;
-                programador.LINKEDIN_PROG = programador.LINKEDIN_PROG;
-                programador.EMAIL_PROG = programador.EMAIL_PROG;
-                programador.PORTIFOLIO_PROG = programador.PORTIFOLIO_PROG;
-                programador.DISPHRTRDIA_PROG = programador.DISPHRTRDIA_PROG;
-                programador.PRETSAL_PROG = programador.PRETSAL_PROG;
-                programador.LINKCRUD_PROG = programador.LINKCRUD_PROG;
+                prog.ID_PROG = prog.ID_PROG;
+                prog.CIDADEID =Convert.ToInt32(form["Cidadeid"]);
+                prog.NOME_PROG = prog.NOME_PROG;
+                prog.CPF_PROG = prog.CPF_PROG;
+                prog.FONE_PROG = prog.FONE_PROG;
+                prog.SKYPE_PROG = prog.SKYPE_PROG;
+                prog.LINKEDIN_PROG = prog.LINKEDIN_PROG;
+                prog.EMAIL_PROG = prog.EMAIL_PROG;
+                prog.PORTIFOLIO_PROG = prog.PORTIFOLIO_PROG;
+                prog.DISPHRTRDIA_PROG =form["DISPHRTRDIA_PROG"];
+                prog.PRETSAL_PROG = prog.PRETSAL_PROG;
+                prog.LINKCRUD_PROG = prog.LINKCRUD_PROG;
 
                 foreach (var item in form["HorariosSelecionados"])
                 {
@@ -67,7 +67,7 @@ namespace Gesprog.Controllers
                 conta.TIPO_CONTA = form["programador.TipoConta"];
 
 
-                ProgramadoresRep.add(programador, ListaDeHorarios);
+                ProgramadoresRep.add(prog, ListaDeHorarios);
 
             }
             return View();
