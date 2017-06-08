@@ -29,6 +29,5 @@ insert into tecnologias(desc_tecno)values('Salesforce');
 insert into tecnologias(desc_tecno)values('Photoshop');
 insert into tecnologias(desc_tecno)values('Ilustrator');
 insert into tecnologias(desc_tecno)values('SEO');
-insert into tecnologias(desc_tecno)values('Outras');
 
 

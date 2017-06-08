@@ -9,19 +9,29 @@ namespace Gesprog.Models
     {
         DbGesprog context;
 
+
         public ProgramadoresRepository()
         {
             this.context = new DbGesprog();
+
         }
         public void add(PROGRAMADORES programador, List<HORARIOS> ListaDeHorarios)
         {
-            context.PROGRAMADORES.Add(programador);
-            context.SaveChanges();
-            programador.ID_PROG = programador.ID_PROG;
+            try
+            { 
+                context.PROGRAMADORES.Add(programador);
+                context.SaveChanges();
 
-            programador.HORARIOS = ListaDeHorarios;
-            context.HORARIOS.Add(programador);
-            context.SaveChanges();
+                HORARIOS hr = new HORARIOS { ID_HR = 1, DESC_HR = "Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás 12:00)" };
+                        
+                programador.HORARIOS.Add(hr);
+                context.SaveChanges();
+          
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
          
     }
