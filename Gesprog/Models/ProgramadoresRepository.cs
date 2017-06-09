@@ -15,17 +15,34 @@ namespace Gesprog.Models
             this.context = new DbGesprog();
 
         }
-        public void add(PROGRAMADORES programador, List<HORARIOS> ListaDeHorarios)
+        public void add(PROGRAMADORES programador, List<string> ListaDeHorarios,CONTAS_BANCARIAS conta)
         {
             try
-            { 
+            {
+                //add programador
                 context.PROGRAMADORES.Add(programador);
                 context.SaveChanges();
 
-                HORARIOS hr = new HORARIOS { ID_HR = 1, DESC_HR = "Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás 12:00)" };
-                        
-                programador.HORARIOS.Add(hr);
+                //add os melhores horarios para se trabalhar
+                var consulta = from hr in context.HORARIOS
+                               select hr;
+                foreach(var item in ListaDeHorarios)
+                {
+                    foreach (var hr in consulta.ToList())
+                    {
+                        if (Convert.ToInt32(item) == hr.ID_HR)
+                        {
+                            programador.HORARIOS.Add(hr);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+
+                //add a conta bancaria do programador
+                programador.CONTAS_BANCARIAS.Add(conta);
                 context.SaveChanges();
+
+
           
             }
             catch(Exception ex)

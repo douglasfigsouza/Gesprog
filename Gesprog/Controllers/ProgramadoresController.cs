@@ -16,16 +16,18 @@ namespace Gesprog.Controllers
         BANCO banco;
         BancosRepository BancosRep;
         CONTAS_BANCARIAS conta;
-
+        List<string> ListaDeIdsHorarios;
+        List<string> ListaDeIdsTecnologias;
         public ProgramadoresController()
         {
             this.EstadosRep = new EstadosRepository();
             this.HorariosRep = new HorariosRepository();
-            this.ListaDeHorarios = new List<HORARIOS>();
             this.ProgramadoresRep = new ProgramadoresRepository();
             this.banco = new BANCO();
             this.BancosRep = new BancosRepository();
             this.conta = new CONTAS_BANCARIAS();
+            this.ListaDeIdsHorarios = new List<string>();
+            this.ListaDeIdsTecnologias = new List<string>();
         }
         // GET: Programadores
         public ActionResult Add_Programador()
@@ -37,26 +39,19 @@ namespace Gesprog.Controllers
         public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                prog.ID_PROG = prog.ID_PROG;
-                prog.CIDADEID =Convert.ToInt32(form["Cidadeid"]);
-                prog.NOME_PROG = prog.NOME_PROG;
-                prog.CPF_PROG = prog.CPF_PROG;
-                prog.FONE_PROG = prog.FONE_PROG;
-                prog.SKYPE_PROG = prog.SKYPE_PROG;
-                prog.LINKEDIN_PROG = prog.LINKEDIN_PROG;
-                prog.EMAIL_PROG = prog.EMAIL_PROG;
-                prog.PORTIFOLIO_PROG = prog.PORTIFOLIO_PROG;
-                prog.DISPHRTRDIA_PROG =form["DISPHRTRDIA_PROG"];
-                prog.PRETSAL_PROG = prog.PRETSAL_PROG;
-                prog.LINKCRUD_PROG = prog.LINKCRUD_PROG;
-
+                //seta ids dos horarios
                 foreach (var item in form["HorariosSelecionados"])
                 {
-                    ListaDeHorarios.Add(new HORARIOS {
-                        ID_HR = Convert.ToInt32(item)
-                    });
+
+                    ListaDeIdsHorarios.Add(item.ToString());
+
+                }
+
+                foreach (var item in form["Tecnologias"])
+                {
+
                 }
                 banco.NOME_BANCO = form["programador.Banco"];
                 BancosRep.Add_Banco(banco);
@@ -67,15 +62,15 @@ namespace Gesprog.Controllers
                 conta.TIPO_CONTA = form["programador.TipoConta"];
 
 
-                ProgramadoresRep.add(prog, ListaDeHorarios);
+                ProgramadoresRep.add(prog, ListaDeIdsHorarios, conta);
 
             }
             return View();
         }
         public JsonResult GetHorarios()
         {
-            return new JsonResult {Data=HorariosRep.GetAll(),JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = HorariosRep.GetAll(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
-   
+
 }
