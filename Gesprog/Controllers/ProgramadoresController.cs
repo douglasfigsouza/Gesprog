@@ -11,21 +11,22 @@ namespace Gesprog.Controllers
     {
         EstadosRepository EstadosRep;
         HorariosRepository HorariosRep;
-        List<HORARIOS> ListaDeHorarios;
         ProgramadoresRepository ProgramadoresRep;
         BANCO banco;
         BancosRepository BancosRep;
         CONTAS_BANCARIAS conta;
+        HORARIOS horarios;
 
         public ProgramadoresController()
         {
             this.EstadosRep = new EstadosRepository();
-            this.HorariosRep = new HorariosRepository();
-            this.ListaDeHorarios = new List<HORARIOS>();
+            this.HorariosRep = new HorariosRepository();;
             this.ProgramadoresRep = new ProgramadoresRepository();
             this.banco = new BANCO();
             this.BancosRep = new BancosRepository();
             this.conta = new CONTAS_BANCARIAS();
+            this.horarios = new HORARIOS();
+            this.horarios.ListaDeHorarios = new List<HORARIOS>();
         }
         // GET: Programadores
         public ActionResult Add_Programador()
@@ -34,9 +35,17 @@ namespace Gesprog.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form)
+        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form,IList<HORARIOS> ListaDeHorarios)
         {
-
+            foreach (var item in ListaDeHorarios)
+            {
+                if (item.Checked == true)
+                {
+                    item.ID_HR = item.ID_HR;
+                    item.DESC_HR = item.DESC_HR;
+                }
+            }
+            ModelState.Clear();
             if(ModelState.IsValid)
             {
                 prog.ID_PROG = prog.ID_PROG;
@@ -52,14 +61,9 @@ namespace Gesprog.Controllers
                 prog.PRETSAL_PROG = prog.PRETSAL_PROG;
                 prog.LINKCRUD_PROG = prog.LINKCRUD_PROG;
 
-                foreach (var item in form["HorariosSelecionados"])
-                {
-                    ListaDeHorarios.Add(new HORARIOS {
-                        ID_HR = Convert.ToInt32(item)
-                    });
-                }
+               
                 banco.NOME_BANCO = form["programador.Banco"];
-                BancosRep.Add_Banco(banco);
+                //BancosRep.Add_Banco(banco);
 
                 conta.ID_BANCO = banco.ID_BANCO;
                 conta.NUM_CONTA = form["programador.Conta"];
@@ -67,15 +71,20 @@ namespace Gesprog.Controllers
                 conta.TIPO_CONTA = form["programador.TipoConta"];
 
 
-                ProgramadoresRep.add(prog, ListaDeHorarios);
+                //ProgramadoresRep.add(prog, ListaDeIdsHorarios);
 
             }
             return View();
         }
-        public JsonResult GetHorarios()
+        public PartialViewResult GetHorarios()
         {
-            return new JsonResult {Data=HorariosRep.GetAll(),JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+            horarios.ListaDeHorarios = HorariosRep.GetAll();
+            return PartialView("_Horarios",horarios);
         }
+        //public JsonResult GetHorarios()
+        //{
+        //    return new JsonResult {Data=HorariosRep.GetAll(),JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+        //}
     }
    
 }

@@ -5,7 +5,7 @@ angular.module("Gesprog")
     $scope.HorariosSelecionados = [];
     $scope.Tecnologias = [];
     $scope.TecnologiasSelecionadas = [];
-
+   
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
@@ -16,10 +16,9 @@ angular.module("Gesprog")
     Service.GetHorarios().then(function (response) {
         $scope.ListHorarios = response.data;
     });
-
     // toggle selection for a given employee by name
-    $scope.toggleSelection = function toggleSelection(IdChecked) {
-        var idx = $scope.HorariosSelecionados.indexOf(IdChecked);
+    $scope.toggleSelection = function toggleSelection(item) {
+        var idx = $scope.HorariosSelecionados.indexOf(item.ID_HR);
         // is currently selected
         if (idx > -1) {
             $scope.HorariosSelecionados.splice(idx, 1);
@@ -27,7 +26,10 @@ angular.module("Gesprog")
 
             // is newly selected
         else {
-            $scope.HorariosSelecionados.push(IdChecked);
+            $scope.HorariosSelecionados.push({
+                "ID_HR": item.ID_HR,
+                "DESC_HR":item.DESC_HR
+            });
         }
     };
     //função que seta a disponibilidade de horario por dia 

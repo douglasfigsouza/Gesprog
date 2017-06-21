@@ -63,6 +63,8 @@ namespace Gesprog.Models
 
         [StringLength(200)]
         public string LINKCRUD_PROG { get; set; }
+        [NotMapped]
+        public List< HORARIOS> HorariosSelecionados { get; set;}
 
         public virtual CIDADE CIDADE { get; set; }
 

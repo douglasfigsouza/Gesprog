@@ -1,8 +1,0 @@
-﻿@model Gesprog.Models.CONTAS_BANCARIAS
-<div class="form-group col-md-12">
-    @Html.CheckBoxListFor(model => model.PostedHorarios.HorariosIds,
-                                              model => model.AvailableHorarios,
-                                              p => p.ID_HR,
-                                              p => p.DESC_HR,
-                                              model => model.SelectedHorarios)
-</div>

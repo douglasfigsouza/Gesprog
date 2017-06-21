@@ -20,6 +20,10 @@ namespace Gesprog.Models
         [Required]
         [StringLength(200)]
         public string DESC_HR { get; set; }
+        [NotMapped]
+        public IList<HORARIOS> ListaDeHorarios;
+        [NotMapped]
+        public bool Checked { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROGRAMADORES> PROGRAMADORES { get; set; }
