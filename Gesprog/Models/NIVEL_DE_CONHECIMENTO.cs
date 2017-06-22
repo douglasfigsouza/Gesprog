@@ -23,6 +23,12 @@ namespace Gesprog.Models
         [StringLength(400)]
         public string OUTROS { get; set; }
 
+        [NotMapped]
+        public string DESC_TECNO { get; set; }
+        [NotMapped]
+        public IList<NIVEL_DE_CONHECIMENTO> ListaDeNiveisDeConhecimento { get; set;}
+        [NotMapped]
+        public bool Checked { get; set; }
         public virtual TECNOLOGIAS TECNOLOGIAS { get; set; }
 
         public virtual PROGRAMADORES PROGRAMADORES { get; set; }

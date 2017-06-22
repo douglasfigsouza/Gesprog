@@ -147,34 +147,8 @@
                         {{Tecnologias}}
                         <fieldset>
                             <legend>Conhecimentos</legend>
-                            <div class="form-group col-md-12" ng-repeat="Tecnologia in ListTecnologias">
-                                <h4>{{Tecnologia.DESC_TECNO}}</h4>
-                                <div class="col-md-12">
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="0"ng-checked="selection.indexOf(Tecnologia.ID_TECNO) > -1" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">0</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="1"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">1</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="2"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">2</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="3" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">3</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="4" ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">4</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="radio" ng-model="Tecnologias" class="radio-inline" value="5"ng-click="SetTecnologiasSelecionada(Tecnologias,Tecnologia);" />
-                                        <label class="control-label">5</label>
-                                    </div>
-                                </div>
+                            <div class="form-group col-md-12">
+                                @Html.Action("GetTecnologias","Programadores")
                             </div>
                             <div class="col-md-12">
                                 <h4>   Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.</h4>

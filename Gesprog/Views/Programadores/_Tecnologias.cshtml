@@ -1,0 +1,31 @@
+﻿@model Gesprog.Models.NIVEL_DE_CONHECIMENTO
+@for (int i = 0;i< Model.ListaDeNiveisDeConhecimento.Count(); i++)
+{
+    <div class="col-md-12">
+        <h4>@Model.ListaDeNiveisDeConhecimento[i].DESC_TECNO</h4>
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,0)
+        @Html.Label("0", new { @class="col-md-1"})
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,1)
+        @Html.Label("1", new { @class = "col-md-1" })
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,2)
+        @Html.Label("2", new { @class = "col-md-1" })
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,3)
+        @Html.Label("3", new { @class = "col-md-1" })
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL, 4)
+        @Html.Label("4", new { @class = "col-md-1" })
+    </div>
+    <div class="col-md-2">
+        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL, 5)
+        @Html.Label("5", new { @class = "col-md-1" })
+    </div>
+}

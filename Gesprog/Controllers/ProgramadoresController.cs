@@ -16,7 +16,8 @@ namespace Gesprog.Controllers
         BancosRepository BancosRep;
         CONTAS_BANCARIAS conta;
         HORARIOS horarios;
-
+        NIVEL_DE_CONHECIMENTO NivelConhecimentoTecnologias;
+        TecnologiasRepository TecnologiasRep;
         public ProgramadoresController()
         {
             this.EstadosRep = new EstadosRepository();
@@ -27,6 +28,9 @@ namespace Gesprog.Controllers
             this.conta = new CONTAS_BANCARIAS();
             this.horarios = new HORARIOS();
             this.horarios.ListaDeHorarios = new List<HORARIOS>();
+            this.TecnologiasRep = new TecnologiasRepository();
+            this.NivelConhecimentoTecnologias = new NIVEL_DE_CONHECIMENTO();
+            this.NivelConhecimentoTecnologias.ListaDeNiveisDeConhecimento = new List<NIVEL_DE_CONHECIMENTO>();
         }
         // GET: Programadores
         public ActionResult Add_Programador()
@@ -35,8 +39,15 @@ namespace Gesprog.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form,IList<HORARIOS> ListaDeHorarios)
+        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form,IList<HORARIOS> ListaDeHorarios, IList<NIVEL_DE_CONHECIMENTO> ListaDeNiveisDeConhecimento)
         {
+            foreach (var item in ListaDeNiveisDeConhecimento)
+            {
+                if (item.Checked == true)
+                {
+                    item.NIVEL = item.NIVEL;
+                }
+            }
             foreach (var item in ListaDeHorarios)
             {
                 if (item.Checked == true)
@@ -80,6 +91,20 @@ namespace Gesprog.Controllers
         {
             horarios.ListaDeHorarios = HorariosRep.GetAll();
             return PartialView("_Horarios",horarios);
+        }
+        public PartialViewResult GetTecnologias()
+        {
+            foreach (var item in TecnologiasRep.GetAllTecnologias().ToList())
+            {
+
+                NivelConhecimentoTecnologias.ListaDeNiveisDeConhecimento.Add(new NIVEL_DE_CONHECIMENTO {
+                    DESC_TECNO = item.DESC_TECNO,
+                    ID_TECNO=item.ID_TECNO
+                    
+                });
+            }
+
+            return PartialView("_Tecnologias", NivelConhecimentoTecnologias);
         }
         //public JsonResult GetHorarios()
         //{
