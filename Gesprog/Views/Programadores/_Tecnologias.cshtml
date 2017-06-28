@@ -1,32 +1,34 @@
 ﻿@model Gesprog.Models.NIVEL_DE_CONHECIMENTO
-    <!--zgsdjadh-->
 @for (int i = 0;i< Model.ListaDeNiveisDeConhecimento.Count(); i++)
 {
     <div class="col-md-12">
         <h4>@Model.ListaDeNiveisDeConhecimento[i].DESC_TECNO</h4>
     </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,0)
-        @Html.Label("0", new { @class="col-md-1"})
+    <div class="col-md-12">
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(0, " + i + ")" })
+            @Html.Label("0", new { @class = "col-md-1" })
+        </div>
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(1," + i + ")" })
+            @Html.Label("1")
+        </div>
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(2," + i + ")" })
+            @Html.Label("2")
+        </div>
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(3," + i + ")" })
+            @Html.Label("3")
+        </div>
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(4," + i + ")" })
+            @Html.Label("4")
+        </div>
+        <div class="col-md-2">
+            @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].Checked, "true", new { @ng_click = "SetTecnologiasSelecionada(5," + i + ")" })
+            @Html.Label("5")
+        </div>
     </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,1)
-        @Html.Label("1", new { @class = "col-md-1" })
-    </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,2)
-        @Html.Label("2", new { @class = "col-md-1" })
-    </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,3)
-        @Html.Label("3", new { @class = "col-md-1" })
-    </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL, 4)
-        @Html.Label("4", new { @class = "col-md-1" })
-    </div>
-    <div class="col-md-2">
-        @Html.RadioButtonFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL, 5)
-        @Html.Label("5", new { @class = "col-md-1" })
-    </div>
+    @Html.HiddenFor(t => t.ListaDeNiveisDeConhecimento[i].NIVEL,new {@ng_model="Niveis",@ng_value="Niveis["+i+"]"})
 }

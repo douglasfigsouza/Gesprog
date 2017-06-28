@@ -5,7 +5,8 @@ angular.module("Gesprog")
     $scope.HorariosSelecionados = [];
     $scope.Tecnologias = [];
     $scope.TecnologiasSelecionadas = [];
-   
+    $scope.Niveis = [];
+
     //função que preenche o combo cidades em função do estado
     $scope.getCities = function (id) {
         Service.GetCidades(id).then(function (response) {
@@ -42,31 +43,8 @@ angular.module("Gesprog")
     });
 
     //seta as tecnologias escolhidas e seus respectivos valores
-    $scope.SetTecnologiasSelecionada = function (nivel, tecnologia) {
-        if ($scope.Tecnologias.length == 0) {
-            $scope.Tecnologias.push({
-                ID_TECNO: tecnologia.ID_TECNO,
-                DESC_TECNO: tecnologia.DESC_TECNO,
-                NIVEL: nivel
-
-            });
-        }
-        else {
-            console.log($scope.Tecnologias);
-            for (var i = $scope.Tecnologias.length - 1; i >= 0; i--) {
-                alert(i + " " + $scope.Tecnologias[i].ID_TECNO + " " + tecnologia.ID_TECNO);
-                if ($scope.Tecnologias[i].ID_TECNO == tecnologia.ID_TECNO) {
-                    $scope.Tecnologias.splice(i, 1);
-                };
-            };
-            $scope.Tecnologias.push({
-                ID_TECNO: tecnologia.ID_TECNO,
-                DESC_TECNO: tecnologia.DESC_TECNO,
-                NIVEL: nivel
-
-            });
-            console.log($scope.Tecnologias);
-        };
+    $scope.SetTecnologiasSelecionada = function (nivel, i) {
+        $scope.Niveis[i]=nivel;
     };
 })
 .factory('Service', function ($http) {
