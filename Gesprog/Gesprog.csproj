@@ -191,7 +191,6 @@
     <Compile Include="Models\EstadosRepository.cs" />
     <Compile Include="Models\HORARIOS.cs" />
     <Compile Include="Models\HorariosRepository.cs" />
-    <Compile Include="Models\HorariosViewModel.cs" />
     <Compile Include="Models\NIVEL_DE_CONHECIMENTO.cs" />
     <Compile Include="Models\PostedHorarios.cs" />
     <Compile Include="Models\PROGRAMADORES.cs" />
