@@ -11,23 +11,27 @@ namespace Gesprog.Controllers
     {
         EstadosRepository EstadosRep;
         HorariosRepository HorariosRep;
-        List<HORARIOS> ListaDeHorarios;
         ProgramadoresRepository ProgramadoresRep;
         BANCO banco;
         BancosRepository BancosRep;
         CONTAS_BANCARIAS conta;
-        List<string> ListaDeIdsHorarios;
-        List<string> ListaDeIdsTecnologias;
+        HORARIOS horarios;
+        NIVEL_DE_CONHECIMENTO NivelConhecimentoTecnologias;
+        TecnologiasRepository TecnologiasRep;
         public ProgramadoresController()
         {
             this.EstadosRep = new EstadosRepository();
             this.HorariosRep = new HorariosRepository();
+            this.ListaDeHorarios = new List<HORARIOS>();
             this.ProgramadoresRep = new ProgramadoresRepository();
             this.banco = new BANCO();
             this.BancosRep = new BancosRepository();
             this.conta = new CONTAS_BANCARIAS();
-            this.ListaDeIdsHorarios = new List<string>();
-            this.ListaDeIdsTecnologias = new List<string>();
+            this.horarios = new HORARIOS();
+            this.horarios.ListaDeHorarios = new List<HORARIOS>();
+            this.TecnologiasRep = new TecnologiasRepository();
+            this.NivelConhecimentoTecnologias = new NIVEL_DE_CONHECIMENTO();
+            this.NivelConhecimentoTecnologias.ListaDeNiveisDeConhecimento = new List<NIVEL_DE_CONHECIMENTO>();
         }
         // GET: Programadores
         public ActionResult Add_Programador()
@@ -36,10 +40,25 @@ namespace Gesprog.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form)
+        public ActionResult Add_Programador(PROGRAMADORES prog, FormCollection form,IList<HORARIOS> ListaDeHorarios, IList<NIVEL_DE_CONHECIMENTO> ListaDeNiveisDeConhecimento)
         {
-
-            if (ModelState.IsValid)
+            foreach (var item in ListaDeNiveisDeConhecimento)
+            {
+                if (item.Checked == true)
+                {
+                    item.NIVEL = item.NIVEL;
+                }
+            }
+            foreach (var item in ListaDeHorarios)
+            {
+                if (item.Checked == true)
+                {
+                    item.ID_HR = item.ID_HR;
+                    item.DESC_HR = item.DESC_HR;
+                }
+            }
+            ModelState.Clear();
+            if(ModelState.IsValid)
             {
                 //seta ids dos horarios
                 foreach (var item in form["HorariosSelecionados"])
@@ -49,12 +68,14 @@ namespace Gesprog.Controllers
 
                 }
 
-                foreach (var item in form["Tecnologias"])
+                foreach (var item in form["HorariosSelecionados"])
                 {
-
+                    ListaDeHorarios.Add(new HORARIOS {
+                        ID_HR = Convert.ToInt32(item)
+                    });
                 }
                 banco.NOME_BANCO = form["programador.Banco"];
-                BancosRep.Add_Banco(banco);
+                //BancosRep.Add_Banco(banco);
 
                 conta.ID_BANCO = banco.ID_BANCO;
                 conta.NUM_CONTA = form["programador.Conta"];
@@ -62,15 +83,34 @@ namespace Gesprog.Controllers
                 conta.TIPO_CONTA = form["programador.TipoConta"];
 
 
-                ProgramadoresRep.add(prog, ListaDeIdsHorarios, conta);
+                //ProgramadoresRep.add(prog, ListaDeIdsHorarios);
 
             }
             return View();
         }
-        public JsonResult GetHorarios()
+        public PartialViewResult GetHorarios()
         {
-            return new JsonResult { Data = HorariosRep.GetAll(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            horarios.ListaDeHorarios = HorariosRep.GetAll();
+            return PartialView("_Horarios",horarios);
         }
+        public PartialViewResult GetTecnologias()
+        {
+            foreach (var item in TecnologiasRep.GetAllTecnologias().ToList())
+            {
+
+                NivelConhecimentoTecnologias.ListaDeNiveisDeConhecimento.Add(new NIVEL_DE_CONHECIMENTO {
+                    DESC_TECNO = item.DESC_TECNO,
+                    ID_TECNO=item.ID_TECNO
+                    
+                });
+            }
+
+            return PartialView("_Tecnologias", NivelConhecimentoTecnologias);
+        }
+        //public JsonResult GetHorarios()
+        //{
+        //    return new JsonResult {Data=HorariosRep.GetAll(),JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+        //}
     }
 
 }

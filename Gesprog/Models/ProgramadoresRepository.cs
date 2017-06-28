@@ -8,40 +8,38 @@ namespace Gesprog.Models
     public class ProgramadoresRepository
     {
         DbGesprog context;
+        HORARIOS horarios;
+        List<HORARIOS> ListaDeHorariosSelecionados;
+        
 
 
         public ProgramadoresRepository()
         {
             this.context = new DbGesprog();
+            this.horarios = new HORARIOS();
 
         }
-        public void add(PROGRAMADORES programador, List<string> ListaDeHorarios,CONTAS_BANCARIAS conta)
+        public void add(PROGRAMADORES programador, List<int> ListaDeIdHorarios)
         {
             try
             {
                 //add programador
                 context.PROGRAMADORES.Add(programador);
                 context.SaveChanges();
-
-                //add os melhores horarios para se trabalhar
-                var consulta = from hr in context.HORARIOS
-                               select hr;
-                foreach(var item in ListaDeHorarios)
-                {
-                    foreach (var hr in consulta.ToList())
+                var consulta =  from hr in context.HORARIOS
+                                select hr;
+                    foreach(var hr in consulta)
                     {
-                        if (Convert.ToInt32(item) == hr.ID_HR)
-                        {
-                            programador.HORARIOS.Add(hr);
-                            context.SaveChanges();
+                        foreach (var item in ListaDeIdHorarios) {
+                            if (hr.ID_HR == item)
+                            {
+                                programador.HORARIOS.Add(hr);
+                                context.SaveChanges();
+                            }
                         }
+
                     }
-                }
-
-                //add a conta bancaria do programador
-                programador.CONTAS_BANCARIAS.Add(conta);
-                context.SaveChanges();
-
+ 
 
           
             }
